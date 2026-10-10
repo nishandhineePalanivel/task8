@@ -1,13 +1,26 @@
 /**
- * Cognifyz Web Development Internship - Level 3, Task 6
- * Server Application: Database Integration & User Authentication Engine
- * Express.js + EJS + Persistent DB + bcryptjs + JWT Authorization
+ * Cognifyz Web Development Internship - Level 3, Task 8
+ * Server Application: Advanced Server-Side Where Data Meets Intelligence
+ * Express.js + Middleware Pipeline (Request ID, Logger, Security) + Background Job Queue + Server-Side Caching + JWT Auth + External APIs + OAuth 2.0
  */
 
 const express = require("express");
 const path = require("path");
-const DatabaseService = require("./services/db");
+
+// Middleware Imports
+const requestIdMiddleware = require("./middleware/requestId");
+const { requestLoggerMiddleware, getRecentLogs, clearLogs } = require("./middleware/logger");
+const securityHeadersMiddleware = require("./middleware/security");
+const { globalLimiter, strictLimiter } = require("./middleware/rateLimiter");
+const { cacheRoute, invalidateCache } = require("./middleware/cache");
 const { generateToken, authenticateToken } = require("./middleware/auth");
+
+// Service Imports
+const DatabaseService = require("./services/db");
+const cacheService = require("./services/cacheService");
+const jobQueue = require("./services/jobQueue");
+const externalApi = require("./services/externalApi");
+const oauthService = require("./services/oauthService");
 
 const app = express();
 
@@ -15,25 +28,192 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Body parsing middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+/* ==========================================================================
+   1. ENTERPRISE MIDDLEWARE PIPELINE (Task 8 Step 1)
+   ========================================================================== */
 
-// Static asset serving
+// 1. Request ID & Correlation Tracking
+app.use(requestIdMiddleware);
+
+// 2. HTTP Security & Hardening Headers
+app.use(securityHeadersMiddleware);
+
+// 3. High-Resolution Request Processing & Audit Logger
+app.use(requestLoggerMiddleware);
+
+// 4. Request Body Parsing with size limits
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+
+// 5. Static Asset Serving
 app.use(express.static(path.join(__dirname, "public")));
 
 // Initialize Database Storage on Server Startup
 DatabaseService.init().then(() => {
-  console.log("Task 6 Persistent Database Initialized.");
+  console.log("Task 8 Persistent Database Initialized.");
 });
 
 /* ==========================================================================
-   1. USER AUTHENTICATION API ENDPOINTS (/api/auth)
+   2. RATE LIMITING MIDDLEWARE
+   ========================================================================== */
+
+// Apply global rate limiting to all API endpoints (/api/*)
+app.use("/api/", globalLimiter);
+
+// Strict rate limiting for Auth, External APIs, and Job Enqueueing
+app.use("/api/auth/", strictLimiter);
+app.use("/api/external/", strictLimiter);
+
+/* ==========================================================================
+   3. TASK 8: BACKGROUND TASKS & JOB PROCESSING API (/api/jobs/*)
    ========================================================================== */
 
 /**
- * POST /api/auth/register - User Registration & Hashed Password Account Creation
+ * POST /api/jobs/enqueue - Enqueue a new asynchronous background task
  */
+app.post("/api/jobs/enqueue", (req, res) => {
+  try {
+    const { type, payload, priority } = req.body;
+
+    const validTypes = [
+      'APPLICATION_VERIFICATION',
+      'REPORT_GENERATION',
+      'DATA_INTELLIGENCE',
+      'DATABASE_BACKUP'
+    ];
+
+    if (!type || !validTypes.includes(type)) {
+      return res.status(400).json({
+        success: false,
+        message: `Invalid job type. Supported types: ${validTypes.join(', ')}`
+      });
+    }
+
+    const job = jobQueue.enqueue(type, payload || {}, priority || 'normal');
+
+    return res.status(202).json({
+      success: true,
+      message: `Background job '${type}' accepted and enqueued for asynchronous worker processing.`,
+      job: job
+    });
+  } catch (err) {
+    console.error("POST /api/jobs/enqueue error:", err);
+    return res.status(500).json({ success: false, message: "Server error enqueueing background job." });
+  }
+});
+
+/**
+ * GET /api/jobs - List all jobs and worker queue telemetry
+ */
+app.get("/api/jobs", (req, res) => {
+  const jobs = jobQueue.getAllJobs();
+  const stats = jobQueue.getStats();
+
+  return res.status(200).json({
+    success: true,
+    stats: stats,
+    jobs: jobs
+  });
+});
+
+/**
+ * GET /api/jobs/:id - Check status and progress of a specific job
+ */
+app.get("/api/jobs/:id", (req, res) => {
+  const job = jobQueue.getJobById(req.params.id);
+  if (!job) {
+    return res.status(404).json({ success: false, message: `Job not found with ID: ${req.params.id}` });
+  }
+  return res.status(200).json({ success: true, job: job });
+});
+
+/**
+ * DELETE /api/jobs/:id - Cancel a pending job
+ */
+app.delete("/api/jobs/:id", (req, res) => {
+  const cancelled = jobQueue.cancelJob(req.params.id);
+  if (!cancelled) {
+    return res.status(400).json({ success: false, message: "Job could not be cancelled (either not found or already running/completed)." });
+  }
+  return res.status(200).json({ success: true, message: `Job ${req.params.id} cancelled successfully.` });
+});
+
+/**
+ * POST /api/jobs/clear - Clear completed and failed jobs
+ */
+app.post("/api/jobs/clear", (req, res) => {
+  const result = jobQueue.clearCompletedJobs();
+  return res.status(200).json(result);
+});
+
+/* ==========================================================================
+   4. TASK 8: SERVER-SIDE CACHING API & TELEMETRY (/api/cache/*)
+   ========================================================================== */
+
+/**
+ * GET /api/cache/stats - Retrieve real-time server caching statistics
+ */
+app.get("/api/cache/stats", (req, res) => {
+  const stats = cacheService.getStats();
+  return res.status(200).json({ success: true, stats: stats });
+});
+
+/**
+ * GET /api/cache/keys - List all active cached keys with remaining TTL
+ */
+app.get("/api/cache/keys", (req, res) => {
+  const keys = cacheService.getKeys();
+  return res.status(200).json({ success: true, keys: keys });
+});
+
+/**
+ * DELETE /api/cache - Flush entire server cache
+ */
+app.delete("/api/cache", (req, res) => {
+  const result = cacheService.flush();
+  return res.status(200).json(result);
+});
+
+/**
+ * DELETE /api/cache/:key - Purge specific cache key
+ */
+app.delete("/api/cache/:key", (req, res) => {
+  const deleted = cacheService.del(req.params.key);
+  if (!deleted) {
+    return res.status(404).json({ success: false, message: `Cache key '${req.params.key}' not found.` });
+  }
+  return res.status(200).json({ success: true, message: `Cache key '${req.params.key}' evicted.` });
+});
+
+/* ==========================================================================
+   5. TASK 8: REQUEST PROCESSING AUDIT LOGS (/api/logs)
+   ========================================================================== */
+
+/**
+ * GET /api/logs - Retrieve recent server request audit logs
+ */
+app.get("/api/logs", (req, res) => {
+  const limit = parseInt(req.query.limit, 10) || 40;
+  const logs = getRecentLogs(limit);
+  return res.status(200).json({
+    success: true,
+    count: logs.length,
+    logs: logs
+  });
+});
+
+/**
+ * DELETE /api/logs - Clear server request logs
+ */
+app.delete("/api/logs", (req, res) => {
+  const result = clearLogs();
+  return res.status(200).json(result);
+});
+
+/* ==========================================================================
+   6. USER AUTHENTICATION API ENDPOINTS (/api/auth)
+   ========================================================================== */
+
 app.post("/api/auth/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -51,16 +231,12 @@ app.post("/api/auth/register", async (req, res) => {
       return res.status(400).json({ success: false, message: "Password must be at least 8 characters long." });
     }
 
-    // Check if email already registered
     const existingUser = await DatabaseService.findUserByEmail(email);
     if (existingUser) {
       return res.status(400).json({ success: false, message: "An account with this email address already exists." });
     }
 
-    // Create user (password hashed securely inside DatabaseService with bcryptjs)
     const newUser = await DatabaseService.createUser({ name, email, password, role: 'user' });
-
-    // Generate JWT Auth Token
     const token = generateToken(newUser);
 
     return res.status(201).json({
@@ -80,9 +256,6 @@ app.post("/api/auth/register", async (req, res) => {
   }
 });
 
-/**
- * POST /api/auth/login - User Login & JWT Token Generation
- */
 app.post("/api/auth/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -96,13 +269,11 @@ app.post("/api/auth/login", async (req, res) => {
       return res.status(401).json({ success: false, message: "Invalid email address or password." });
     }
 
-    // Verify hashed password
     const isMatch = await DatabaseService.verifyPassword(password, user.password);
     if (!isMatch) {
       return res.status(401).json({ success: false, message: "Invalid email address or password." });
     }
 
-    // Generate JWT Auth Token
     const token = generateToken(user);
 
     return res.status(200).json({
@@ -122,9 +293,6 @@ app.post("/api/auth/login", async (req, res) => {
   }
 });
 
-/**
- * GET /api/auth/me - Retrieve current authenticated user profile
- */
 app.get("/api/auth/me", authenticateToken, async (req, res) => {
   const user = await DatabaseService.findUserById(req.user.id);
   if (!user) {
@@ -142,7 +310,7 @@ app.get("/api/auth/me", authenticateToken, async (req, res) => {
 });
 
 /* ==========================================================================
-   2. PROTECTED REGISTRATION CRUD API ENDPOINTS (/api/registrations)
+   7. CACHED & PROTECTED REGISTRATION CRUD API (/api/registrations)
    ========================================================================== */
 
 function validateRegistrationPayload(data) {
@@ -175,8 +343,8 @@ function validateRegistrationPayload(data) {
   return errors;
 }
 
-// GET /api/registrations - Retrieve all registration records
-app.get("/api/registrations", async (req, res) => {
+// GET /api/registrations - Cached route (TTL 60s)
+app.get("/api/registrations", cacheRoute(60, "registrations"), async (req, res) => {
   try {
     const registrations = await DatabaseService.getAllRegistrations();
     return res.status(200).json({
@@ -190,8 +358,8 @@ app.get("/api/registrations", async (req, res) => {
   }
 });
 
-// GET /api/registrations/:id - Retrieve single registration by ID
-app.get("/api/registrations/:id", async (req, res) => {
+// GET /api/registrations/:id - Single record
+app.get("/api/registrations/:id", cacheRoute(60, "registration_single"), async (req, res) => {
   try {
     const record = await DatabaseService.getRegistrationById(req.params.id);
     if (!record) {
@@ -203,8 +371,8 @@ app.get("/api/registrations/:id", async (req, res) => {
   }
 });
 
-// POST /api/registrations - Create a new registration record (Protected by JWT Authorization)
-app.post("/api/registrations", authenticateToken, async (req, res) => {
+// POST /api/registrations - Mutating action, auto-invalidates registrations cache
+app.post("/api/registrations", authenticateToken, invalidateCache("registrations"), async (req, res) => {
   try {
     const errors = validateRegistrationPayload(req.body);
     if (errors.length > 0) {
@@ -223,8 +391,8 @@ app.post("/api/registrations", authenticateToken, async (req, res) => {
   }
 });
 
-// PUT /api/registrations/:id - Update registration record (Protected by JWT Authorization)
-app.put("/api/registrations/:id", authenticateToken, async (req, res) => {
+// PUT /api/registrations/:id - Mutating action, auto-invalidates registrations cache
+app.put("/api/registrations/:id", authenticateToken, invalidateCache("registrations"), async (req, res) => {
   try {
     const { id } = req.params;
     const existing = await DatabaseService.getRegistrationById(id);
@@ -249,8 +417,8 @@ app.put("/api/registrations/:id", authenticateToken, async (req, res) => {
   }
 });
 
-// DELETE /api/registrations/:id - Delete registration record (Protected by JWT Authorization)
-app.delete("/api/registrations/:id", authenticateToken, async (req, res) => {
+// DELETE /api/registrations/:id - Mutating action, auto-invalidates registrations cache
+app.delete("/api/registrations/:id", authenticateToken, invalidateCache("registrations"), async (req, res) => {
   try {
     const { id } = req.params;
     const deleted = await DatabaseService.deleteRegistration(id);
@@ -270,7 +438,116 @@ app.delete("/api/registrations/:id", authenticateToken, async (req, res) => {
 });
 
 /* ==========================================================================
-   3. PAGE ROUTES & SERVING VIEWS
+   8. EXTERNAL REST APIS & OAUTH 2.0 SIMULATION (/api/external/* & /api/oauth/*)
+   ========================================================================== */
+
+app.get("/api/external/weather", cacheRoute(120, "weather"), async (req, res) => {
+  try {
+    const city = req.query.city || 'Chennai';
+    const weatherData = await externalApi.getWeather(city);
+    return res.status(200).json(weatherData);
+  } catch (err) {
+    return res.status(500).json({ success: false, message: "Failed to fetch external weather data.", error: err.message });
+  }
+});
+
+app.get("/api/external/repos", cacheRoute(180, "repos"), async (req, res) => {
+  try {
+    const topic = req.query.topic || 'web-development';
+    const reposData = await externalApi.getAcademicRepos(topic);
+    return res.status(200).json(reposData);
+  } catch (err) {
+    return res.status(500).json({ success: false, message: "Failed to fetch external GitHub repository data.", error: err.message });
+  }
+});
+
+app.post("/api/external/cache/clear", (req, res) => {
+  const result = externalApi.clearCache();
+  return res.status(200).json(result);
+});
+
+app.get("/api/oauth/authorize", (req, res) => {
+  try {
+    const { client_id, redirect_uri, scope, state } = req.query;
+    const result = oauthService.generateAuthorizationCode({
+      clientId: client_id || 'cognifyz_app_2026',
+      redirectUri: redirect_uri || 'http://localhost:3000/#oauth-demo',
+      scope: scope || 'read:profile read:courses',
+      state: state || 'state_nonce_123'
+    });
+    return res.status(200).json(result);
+  } catch (err) {
+    return res.status(err.status || 400).json({ success: false, message: err.message });
+  }
+});
+
+app.post("/api/oauth/token", (req, res) => {
+  try {
+    const { grant_type, client_id, client_secret, code, redirect_uri, refresh_token } = req.body;
+    const result = oauthService.exchangeToken({
+      grantType: grant_type,
+      clientId: client_id,
+      clientSecret: client_secret,
+      code: code,
+      redirectUri: redirect_uri,
+      refreshToken: refresh_token
+    });
+    return res.status(200).json(result);
+  } catch (err) {
+    return res.status(err.status || 400).json({ success: false, message: err.message });
+  }
+});
+
+app.get("/api/oauth/resource", (req, res) => {
+  try {
+    const authHeader = req.headers['authorization'];
+    const result = oauthService.getProtectedResource(authHeader);
+    return res.status(200).json(result);
+  } catch (err) {
+    return res.status(err.status || 401).json({ success: false, message: err.message });
+  }
+});
+
+app.get("/api/rate-limit-status", (req, res) => {
+  return res.status(200).json({
+    success: true,
+    serverTime: new Date().toISOString(),
+    rateLimitingActive: true,
+    policy: {
+      globalLimit: "100 requests per 15 minutes",
+      strictLimit: "15 requests per 15 minutes",
+      windowMs: 15 * 60 * 1000
+    },
+    clientIp: req.ip || req.socket.remoteAddress
+  });
+});
+
+/* ==========================================================================
+   9. CENTRALIZED ERROR HANDLING
+   ========================================================================== */
+
+app.all("/api/*", (req, res) => {
+  return res.status(404).json({
+    success: false,
+    error: "API Endpoint Not Found",
+    message: `The API endpoint '${req.method} ${req.originalUrl}' does not exist on this server.`
+  });
+});
+
+app.use((err, req, res, next) => {
+  console.error("Unhandled Error Caught:", err);
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    return res.status(400).json({ success: false, message: "Invalid JSON body payload received in request." });
+  }
+  return res.status(500).json({
+    success: false,
+    error: "Internal Server Error",
+    message: err.message || "An unexpected error occurred on the server."
+  });
+});
+
+/* ==========================================================================
+   10. PAGE ROUTES & SERVING VIEWS
    ========================================================================== */
 
 app.get("/", (req, res) => {
@@ -305,5 +582,5 @@ app.post("/contact", (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Task 6 Authenticated Server running on http://localhost:${PORT}`);
+  console.log(`Task 8 Advanced Server (Middleware + Jobs + Cache) running on http://localhost:${PORT}`);
 });

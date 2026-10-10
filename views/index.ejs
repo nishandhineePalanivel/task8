@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Academic Portal & User Authentication - Level 3 Task 6</title>
+  <title>Student Academic Portal & Advanced Server Engine - Level 3 Task 8</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,17 +21,17 @@
 </head>
 <body>
 
-  <!-- 1. RESPONSIVE NAVBAR SECTION WITH AUTH CONTROLS -->
+  <!-- 1. RESPONSIVE NAVBAR SECTION WITH AUTH & ADVANCED SERVER-SIDE CONTROLS -->
   <header>
     <nav class="navbar navbar-expand-lg fixed-top custom-navbar" aria-label="Main Navigation">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
           <div class="navbar-brand-badge">
-            <i class="bi bi-shield-lock-fill"></i>
+            <i class="bi bi-cpu-fill"></i>
           </div>
           <div>
             <span class="font-heading fw-bold fs-5 text-dark d-block leading-tight">EduPortal</span>
-            <small class="text-muted font-mono" style="font-size: 0.7rem;">Auth & DB v6.0</small>
+            <small class="text-muted font-mono" style="font-size: 0.7rem;">Server Intelligence v8.0</small>
           </div>
         </a>
 
@@ -47,22 +47,22 @@
               <a class="nav-link" href="#home"><i class="bi bi-house-door me-1"></i>Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#about"><i class="bi bi-info-circle me-1"></i>About</a>
+              <a class="nav-link" href="#jobs"><i class="bi bi-cpu me-1"></i>Task Queue</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#features"><i class="bi bi-grid me-1"></i>Features</a>
+              <a class="nav-link" href="#server-cache"><i class="bi bi-lightning-charge me-1"></i>Cache & Logs</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#courses"><i class="bi bi-book me-1"></i>Courses</a>
+              <a class="nav-link" href="#external-api"><i class="bi bi-cloud-arrow-down me-1"></i>External APIs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#oauth-demo"><i class="bi bi-key-fill me-1"></i>OAuth 2.0</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#register"><i class="bi bi-pencil-square me-1"></i>Registration</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#dashboard"><i class="bi bi-database me-1"></i>Manage Records</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact"><i class="bi bi-envelope me-1"></i>Contact</a>
             </li>
           </ul>
 
@@ -112,31 +112,31 @@
           <div class="row align-items-center g-4 g-lg-5">
             <div class="col-lg-7 animate-fade-in-up">
               <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill bg-white border border-slate-200 shadow-sm mb-3">
-                <span class="badge bg-primary rounded-pill">Task 6</span>
-                <span class="small fw-bold text-muted">Database Integration & User Authentication</span>
+                <span class="badge bg-primary rounded-pill">Task 8</span>
+                <span class="small fw-bold text-muted">Advanced Server-Side Where Data Meets Intelligence</span>
               </div>
               
               <h1 class="hero-title mb-3">
-                Secure Academic Portal with <span class="hero-gradient-text">Authentication & JWT Security</span>
+                Enterprise Backend Engine with <span class="hero-gradient-text">Task Queues & Server Caching</span>
               </h1>
               
               <p class="hero-subtitle mb-4">
-                Enterprise server-client security built with bcrypt password hashing, JWT authorization checks on REST API endpoints, persistent database storage, and a responsive CRUD dashboard.
+                Architected with a structured request processing pipeline (Request ID tracking, audit logging, security hardening), an asynchronous background task queue engine, and high-performance server-side caching with automated mutation invalidation.
               </p>
 
               <div class="d-flex flex-column flex-sm-row gap-3">
-                <a href="#register" class="btn btn-custom-primary">
-                  <i class="bi bi-pencil-square"></i> Apply Now
+                <a href="#jobs" class="btn btn-custom-primary">
+                  <i class="bi bi-cpu-fill"></i> Launch Background Task Queue
                 </a>
-                <a href="#login" class="btn btn-custom-secondary">
-                  <i class="bi bi-shield-lock"></i> User Login
+                <a href="#server-cache" class="btn btn-custom-secondary">
+                  <i class="bi bi-lightning-charge-fill"></i> Monitor Cache & Audit Logs
                 </a>
               </div>
 
               <div class="mt-4 pt-3 d-flex flex-wrap align-items-center gap-4 text-muted small border-top">
-                <span><i class="bi bi-check-circle-fill text-success me-1"></i> bcrypt Password Hashing</span>
-                <span><i class="bi bi-shield-check text-primary me-1"></i> JWT Authorization Headers</span>
-                <span><i class="bi bi-hdd-stack-fill text-warning me-1"></i> Persistent DB Storage</span>
+                <span><i class="bi bi-gear-wide-connected text-primary me-1"></i> Asynchronous Job Queue</span>
+                <span><i class="bi bi-lightning-charge-fill text-warning me-1"></i> Server Caching (&lt;1ms)</span>
+                <span><i class="bi bi-file-earmark-code-fill text-success me-1"></i> Request ID & Audit Logger</span>
               </div>
             </div>
 
@@ -144,47 +144,47 @@
               <div class="hero-card-illustration p-4 rounded-4 bg-white border shadow-lg">
                 <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
                   <div class="bg-primary text-white rounded-3 p-3 fs-4 d-flex align-items-center justify-center">
-                    <i class="bi bi-shield-lock-fill"></i>
+                    <i class="bi bi-hdd-network-fill"></i>
                   </div>
                   <div>
-                    <h3 class="h6 mb-0 font-heading fw-bold">Authenticated REST API Server</h3>
-                    <small class="text-muted font-mono">Express + JWT + bcryptjs + DB</small>
+                    <h3 class="h6 mb-0 font-heading fw-bold">Advanced Server Pipeline</h3>
+                    <small class="text-muted font-mono">Middleware + Queue + Cache v8.0</small>
                   </div>
                 </div>
 
                 <div class="p-3 bg-light rounded-3 mb-3 border">
                   <div class="d-flex justify-content-between text-muted small mb-1">
-                    <span>Security Authorization</span>
-                    <span class="text-success fw-bold"><i class="bi bi-lock-fill me-1"></i> JWT Shield Active</span>
+                    <span>Cache Hit Efficiency</span>
+                    <span id="hero-cache-hit-ratio" class="text-success fw-bold font-mono"><i class="bi bi-lightning-fill me-1"></i> 100.0% Optimized</span>
                   </div>
                   <div class="progress" style="height: 6px;">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div id="hero-cache-progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
 
                 <div class="row g-2 text-center small">
                   <div class="col-6">
                     <div class="p-2 border rounded bg-white font-mono">
-                      <strong class="d-block text-primary" style="font-size: 0.75rem;">POST /api/auth/login</strong>
-                      <span class="text-muted" style="font-size: 0.7rem;">bcrypt Verification</span>
+                      <strong class="d-block text-primary" style="font-size: 0.75rem;">Background Queue</strong>
+                      <span class="text-muted" style="font-size: 0.7rem;">Bull/Redis Architecture</span>
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="p-2 border rounded bg-white font-mono">
-                      <strong class="d-block text-success" style="font-size: 0.75rem;">POST /api/auth/register</strong>
-                      <span class="text-muted" style="font-size: 0.7rem;">Password Hashing</span>
+                      <strong class="d-block text-success" style="font-size: 0.75rem;">Server-Side Cache</strong>
+                      <span class="text-muted" style="font-size: 0.7rem;">TTL & Auto Eviction</span>
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="p-2 border rounded bg-white font-mono">
-                      <strong class="d-block text-warning" style="font-size: 0.75rem;">Bearer Token Auth</strong>
-                      <span class="text-muted" style="font-size: 0.7rem;">Protected Endpoints</span>
+                      <strong class="d-block text-warning" style="font-size: 0.75rem;">X-Request-Id</strong>
+                      <span class="text-muted" style="font-size: 0.7rem;">Correlation Tracking</span>
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="p-2 border rounded bg-white font-mono">
-                      <strong class="d-block text-danger" style="font-size: 0.75rem;">Persistent DB Storage</strong>
-                      <span class="text-muted" style="font-size: 0.7rem;">User & Reg Schema</span>
+                      <strong class="d-block text-danger" style="font-size: 0.75rem;">Audit Logger</strong>
+                      <span class="text-muted" style="font-size: 0.7rem;">High-Res hrtime() ms</span>
                     </div>
                   </div>
                 </div>
@@ -199,35 +199,35 @@
         <div class="container py-4">
           <div class="row justify-content-center text-center mb-5">
             <div class="col-lg-8">
-              <span class="text-primary fw-bold text-uppercase tracking-wider small d-block mb-1">About Our Institution</span>
-              <h2 class="display-6 fw-bold mb-3">Empowering Engineering Excellence</h2>
-              <p class="text-muted">Our academic portal combines secure database persistence, server user authentication, JWT authorized API access, and complex client validation.</p>
+              <span class="text-primary fw-bold text-uppercase tracking-wider small d-block mb-1">Architecture Overview</span>
+              <h2 class="display-6 fw-bold mb-3">Where Data Meets Intelligence</h2>
+              <p class="text-muted">Enterprise backend engineered with asynchronous background job workers, sub-millisecond in-memory caching, and request lifecycle telemetry.</p>
             </div>
           </div>
 
           <div class="row g-4">
             <div class="col-6 col-md-3">
               <div class="stat-card">
-                <div class="stat-number">5,000+</div>
-                <div class="stat-label">Enrolled Students</div>
+                <div class="stat-number">&lt; 1 ms</div>
+                <div class="stat-label">Cache Hit Latency</div>
               </div>
             </div>
             <div class="col-6 col-md-3">
               <div class="stat-card">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Placement Rate</div>
-              </div>
-            </div>
-            <div class="col-6 col-md-3">
-              <div class="stat-card">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Degree Programs</div>
+                <div class="stat-number">2 Workers</div>
+                <div class="stat-label">Concurrent Job Queue</div>
               </div>
             </div>
             <div class="col-6 col-md-3">
               <div class="stat-card">
                 <div class="stat-number">100%</div>
-                <div class="stat-label">JWT Authenticated</div>
+                <div class="stat-label">Audit Logged Requests</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="stat-card">
+                <div class="stat-number">Auto</div>
+                <div class="stat-label">Mutation Cache Eviction</div>
               </div>
             </div>
           </div>
@@ -239,263 +239,144 @@
         <div class="container py-4">
           <div class="row justify-content-center text-center mb-5">
             <div class="col-lg-8">
-              <span class="text-primary fw-bold text-uppercase tracking-wider small d-block mb-1">Task 6 Capabilities</span>
-              <h2 class="display-6 fw-bold mb-3">Security & Database Integration</h2>
-              <p class="text-muted">Built with server authentication, password encryption, authorization headers, and database persistence.</p>
+              <span class="text-primary fw-bold text-uppercase tracking-wider small d-block mb-1">Task 8 Capabilities</span>
+              <h2 class="display-6 fw-bold mb-3">Advanced Server-Side Features</h2>
+              <p class="text-muted">Structured middleware, background workers, and performance caching designed for production scalability.</p>
             </div>
           </div>
 
           <div class="row g-4">
             <div class="col-12 col-md-6 col-lg-4">
               <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                  <i class="bi bi-key-fill"></i>
+                <div class="feature-icon bg-primary-light text-primary">
+                  <i class="bi bi-cpu-fill"></i>
                 </div>
-                <h3 class="h5 font-heading fw-bold mb-2">bcrypt Password Hashing</h3>
-                <p class="text-muted small mb-0">User passwords are salted and hashed using bcryptjs before database storage. Passwords are never stored in plain text.</p>
+                <h3 class="h5 font-heading fw-bold mb-2">Asynchronous Job Queue</h3>
+                <p class="text-muted small mb-0">Processes long-running verification tasks, PDF report compiles, and database snapshots asynchronously with concurrency limits and live progress reporting.</p>
               </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
               <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                  <i class="bi bi-shield-check"></i>
+                <div class="feature-icon bg-success-light text-success">
+                  <i class="bi bi-lightning-charge-fill"></i>
                 </div>
-                <h3 class="h5 font-heading fw-bold mb-2">JWT Token Authentication</h3>
-                <p class="text-muted small mb-0">Generates signed JSON Web Tokens upon login (`POST /api/auth/login`) to authorize REST API CRUD requests.</p>
+                <h3 class="h5 font-heading fw-bold mb-2">Route-Level Caching</h3>
+                <p class="text-muted small mb-0">Implements in-memory key-value caching returning `X-Cache: HIT` in &lt;1ms for read routes, with automatic cache invalidation on database mutations.</p>
               </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
               <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                  <i class="bi bi-lock-fill"></i>
+                <div class="feature-icon bg-warning-light text-warning">
+                  <i class="bi bi-card-checklist"></i>
                 </div>
-                <h3 class="h5 font-heading fw-bold mb-2">Protected API Endpoints</h3>
-                <p class="text-muted small mb-0">Endpoints (`POST`, `PUT`, `DELETE /api/registrations`) are guarded with authorization checks requiring valid bearer tokens.</p>
+                <h3 class="h5 font-heading fw-bold mb-2">High-Res Audit Logger</h3>
+                <p class="text-muted small mb-0">Tracks request execution down to fractional milliseconds using `process.hrtime()`, logging client IP, user agent, and masked request bodies.</p>
               </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
               <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                  <i class="bi bi-hdd-stack-fill"></i>
+                <div class="feature-icon bg-info-light text-info">
+                  <i class="bi bi-fingerprint"></i>
                 </div>
-                <h3 class="h5 font-heading fw-bold mb-2">Database Integration</h3>
-                <p class="text-muted small mb-0">Persistent storage service module (`services/db.js`) maintaining user accounts and registration data across server restarts.</p>
+                <h3 class="h5 font-heading fw-bold mb-2">Request ID Correlation</h3>
+                <p class="text-muted small mb-0">Every HTTP transaction receives an `X-Request-Id` UUID header for end-to-end tracing across distributed server logs and microservices.</p>
               </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
               <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                  <i class="bi bi-check-all"></i>
+                <div class="feature-icon bg-danger-light text-danger">
+                  <i class="bi bi-shield-lock-fill"></i>
                 </div>
-                <h3 class="h5 font-heading fw-bold mb-2">Complex Form Validation</h3>
-                <p class="text-muted small mb-0">Preserved Task 4 validation rules for Name, Email, 10-digit Phone, Age, Course, Password rules, and Terms.</p>
+                <h3 class="h5 font-heading fw-bold mb-2">Security Hardening Headers</h3>
+                <p class="text-muted small mb-0">Injects `nosniff`, `SAMEORIGIN`, and XSS protection headers alongside Express rate limiting to prevent denial-of-service and clickjacking.</p>
               </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
               <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                  <i class="bi bi-speedometer2"></i>
+                <div class="feature-icon bg-purple-light text-purple" style="background-color: #f3e8ff; color: #7e22ce;">
+                  <i class="bi bi-diagram-3-fill"></i>
                 </div>
-                <h3 class="h5 font-heading fw-bold mb-2">Dynamic DOM & SPA Router</h3>
-                <p class="text-muted small mb-0">Live password strength progress bar, checklist, preview card, CRUD dashboard, and SPA hash routing (`#login`, `#dashboard`).</p>
+                <h3 class="h5 font-heading fw-bold mb-2">Full Stack Continuity</h3>
+                <p class="text-muted small mb-0">Preserves all features from Tasks 4, 5, 6, & 7 including JWT authentication, bcrypt encryption, external REST APIs, and OAuth 2.0.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 5. COURSES SECTION -->
-      <section id="courses" class="py-5 bg-white border-top border-bottom">
+      <!-- 5. REGISTRATION FORM SECTION -->
+      <section id="register" class="py-5 bg-light border-top">
         <div class="container py-4">
-          <div class="row justify-content-center text-center mb-5">
+          <div class="row justify-content-center text-center mb-4">
             <div class="col-lg-8">
-              <span class="text-primary fw-bold text-uppercase tracking-wider small d-block mb-1">Degree Programs</span>
-              <h2 class="display-6 fw-bold mb-3">Featured Engineering Disciplines</h2>
-              <p class="text-muted">Select your degree course and apply through our integrated API form below.</p>
+              <span class="badge bg-primary rounded-pill mb-2 font-mono">Task 4, 5, 6 Integration</span>
+              <h2 class="display-6 fw-bold mb-2">Student Application Form</h2>
+              <p class="text-muted">Fill in your information below with dynamic real-time validation and preview updates.</p>
             </div>
           </div>
 
-          <div class="row g-4">
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="course-card">
-                <div>
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="course-badge">4-Year Degree</span>
-                    <i class="bi bi-broadcast fs-4 text-primary"></i>
-                  </div>
-                  <h3 class="h5 font-heading fw-bold">B.E. Electronics & Communication</h3>
-                  <p class="text-muted small">Embedded systems, IoT, digital signal processing, and VLSI circuit design.</p>
-                </div>
-                <div class="pt-3 border-top d-flex justify-content-between align-items-center">
-                  <small class="text-muted font-mono"><i class="bi bi-clock me-1"></i>8 Semesters</small>
-                  <a href="#register" class="btn btn-sm btn-outline-primary fw-bold">Select Course</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="course-card">
-                <div>
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="course-badge">4-Year Degree</span>
-                    <i class="bi bi-code-slash fs-4 text-primary"></i>
-                  </div>
-                  <h3 class="h5 font-heading fw-bold">B.E. Computer Science & Engineering</h3>
-                  <p class="text-muted small">Full-stack software engineering, artificial intelligence, cloud architecture, and data structures.</p>
-                </div>
-                <div class="pt-3 border-top d-flex justify-content-between align-items-center">
-                  <small class="text-muted font-mono"><i class="bi bi-clock me-1"></i>8 Semesters</small>
-                  <a href="#register" class="btn btn-sm btn-outline-primary fw-bold">Select Course</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="course-card">
-                <div>
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="course-badge">4-Year Degree</span>
-                    <i class="bi bi-pc-display fs-4 text-primary"></i>
-                  </div>
-                  <h3 class="h5 font-heading fw-bold">B.Tech Information Technology</h3>
-                  <p class="text-muted small">Web applications, database management systems, network security, and DevOps.</p>
-                </div>
-                <div class="pt-3 border-top d-flex justify-content-between align-items-center">
-                  <small class="text-muted font-mono"><i class="bi bi-clock me-1"></i>8 Semesters</small>
-                  <a href="#register" class="btn btn-sm btn-outline-primary fw-bold">Select Course</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. REGISTRATION FORM & LIVE PREVIEW SECTION -->
-      <section id="register" class="py-5 bg-light">
-        <div class="container py-4">
-          <div class="row justify-content-center mb-4">
-            <div class="col-lg-10 text-center">
-              <div class="d-inline-flex align-items-center justify-content-center w-12 h-12 rounded-circle bg-primary-light text-primary mb-3">
-                <i class="bi bi-shield-check fs-3"></i>
-              </div>
-              <h2 class="h3 font-heading fw-bold mb-1">Student Registration Application</h2>
-              <p class="text-muted small mb-0">Level 3 - Task 6: Submitted via JWT Authorization to Persistent Database (`POST /api/registrations`)</p>
-            </div>
-          </div>
-
-          <div class="row g-4">
-            <!-- Registration Form Column -->
+          <div class="row g-4 justify-content-center">
             <div class="col-lg-7">
-              <div class="registration-card h-100">
-                <h3 class="h5 font-heading fw-bold mb-3 d-flex align-items-center gap-2">
-                  <i class="bi bi-pencil-square text-primary"></i> Application Form
-                </h3>
+              <div class="registration-card bg-white border shadow-sm">
+                
+                <div id="form-success-banner" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+                  <i class="bi bi-check-circle-fill me-2"></i>
+                  <span id="form-success-message">Form validated successfully!</span>
+                </div>
 
-                <form id="registration-form" action="/submit" method="POST" class="needs-validation" novalidate>
-                  
-                  <!-- Full Name Input -->
+                <form id="registration-form" novalidate>
                   <div class="mb-3">
-                    <div class="d-flex justify-content-between align-items-center mb-1">
-                      <label for="name" class="form-label mb-0">Full Name <span class="text-danger">*</span></label>
-                      <small id="name-char-count" class="text-muted font-mono" style="font-size: 0.75rem;">0 / 50 characters</small>
-                    </div>
-                    <div class="input-group">
-                      <span class="input-group-text bg-light"><i class="bi bi-person text-muted"></i></span>
-                      <input 
-                        type="text" 
-                        class="form-control" 
-                        id="name" 
-                        name="name" 
-                        placeholder="e.g. John Doe"
-                        maxlength="50"
-                        required
-                      >
-                    </div>
+                    <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Nishandhinee M" required>
                     <div id="name-error" class="invalid-feedback"></div>
                   </div>
 
-                  <!-- Email Address Input -->
                   <div class="mb-3">
                     <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
-                    <div class="input-group">
-                      <span class="input-group-text bg-light"><i class="bi bi-envelope text-muted"></i></span>
-                      <input 
-                        type="email" 
-                        class="form-control" 
-                        id="email" 
-                        name="email" 
-                        placeholder="e.g. john@college.edu" 
-                        required
-                      >
-                    </div>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="e.g. nishandhinee@example.com" required>
                     <div id="email-error" class="invalid-feedback"></div>
                   </div>
 
-                  <!-- Phone Number & Age Row -->
                   <div class="row g-3 mb-3">
                     <div class="col-md-7">
-                      <label for="phone" class="form-label">Phone Number (10-Digit) <span class="text-danger">*</span></label>
+                      <label for="phone" class="form-label">Phone Number (10-Digit Indian Mobile) <span class="text-danger">*</span></label>
                       <div class="input-group">
                         <span class="input-group-text bg-light">+91</span>
-                        <input 
-                          type="tel" 
-                          class="form-control" 
-                          id="phone" 
-                          name="phone" 
-                          placeholder="e.g. 9876543210"
-                          maxlength="10" 
-                          required
-                        >
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="9876543210" maxlength="10" required>
                       </div>
                       <div id="phone-error" class="invalid-feedback"></div>
                     </div>
 
                     <div class="col-md-5">
                       <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
-                      <div class="input-group">
-                        <span class="input-group-text bg-light"><i class="bi bi-calendar text-muted"></i></span>
-                        <input 
-                          type="number" 
-                          class="form-control" 
-                          id="age" 
-                          name="age" 
-                          placeholder="e.g. 20" 
-                          min="16" 
-                          max="100"
-                          required
-                        >
-                      </div>
+                      <input type="number" class="form-control" id="age" name="age" min="16" max="100" placeholder="e.g. 21" required>
                       <div id="age-error" class="invalid-feedback"></div>
                     </div>
                   </div>
 
-                  <!-- Course Selection -->
                   <div class="mb-3">
-                    <label for="course" class="form-label">Desired Engineering Course <span class="text-danger">*</span></label>
-                    <div class="input-group">
-                      <span class="input-group-text bg-light"><i class="bi bi-journal-bookmark text-muted"></i></span>
-                      <select class="form-select" id="course" name="course" required>
-                        <option value="" disabled selected>-- Select Engineering Course --</option>
-                        <option value="B.E. Electronics and Communication Engineering">B.E. Electronics and Communication Engineering</option>
-                        <option value="B.E. Computer Science and Engineering">B.E. Computer Science and Engineering</option>
-                        <option value="B.Tech Information Technology">B.Tech Information Technology</option>
-                        <option value="B.E. Mechanical Engineering">B.E. Mechanical Engineering</option>
-                        <option value="B.E. Electrical and Electronics Engineering">B.E. Electrical and Electronics Engineering</option>
-                      </select>
-                    </div>
+                    <label for="course" class="form-label">Select Degree Program <span class="text-danger">*</span></label>
+                    <select class="form-select" id="course" name="course" required>
+                      <option value="" selected disabled>-- Choose Engineering Specialization --</option>
+                      <option value="B.E. Electronics and Communication Engineering">B.E. Electronics and Communication Engineering</option>
+                      <option value="B.E. Computer Science and Engineering">B.E. Computer Science and Engineering</option>
+                      <option value="B.Tech Information Technology">B.Tech Information Technology</option>
+                      <option value="B.E. Mechanical Engineering">B.E. Mechanical Engineering</option>
+                      <option value="B.E. Electrical and Electronics Engineering">B.E. Electrical and Electronics Engineering</option>
+                    </select>
                     <div id="course-error" class="invalid-feedback"></div>
                   </div>
 
-                  <!-- Password Input & Show/Hide Toggle -->
+                  <!-- Password Input & Strength Indicator -->
                   <div class="mb-3">
-                    <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                    <label for="password" class="form-label">Account Password <span class="text-danger">*</span></label>
                     <div class="input-group">
-                      <span class="input-group-text bg-light"><i class="bi bi-lock text-muted"></i></span>
+                      <span class="input-group-text bg-light"><i class="bi bi-lock-fill text-muted"></i></span>
                       <input 
                         type="password" 
                         class="form-control" 
@@ -534,7 +415,7 @@
                     </div>
                   </div>
 
-                  <!-- Confirm Password Input & Show/Hide Toggle -->
+                  <!-- Confirm Password Input -->
                   <div class="mb-3">
                     <label for="confirmPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
                     <div class="input-group">
@@ -554,7 +435,7 @@
                     <div id="confirmPassword-error" class="invalid-feedback"></div>
                   </div>
 
-                  <!-- Terms and Conditions Checkbox -->
+                  <!-- Terms Checkbox -->
                   <div class="mb-4 form-check">
                     <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
                     <label class="form-check-label small text-muted" for="terms">
@@ -623,7 +504,7 @@
 
                 <div class="mt-4 p-3 bg-primary-light rounded text-center">
                   <small class="text-primary fw-semibold d-block">
-                    <i class="bi bi-shield-lock me-1"></i> Requires JWT Header: `Authorization: Bearer <token>`
+                    <i class="bi bi-lightning-charge me-1"></i> Responses cached via `X-Cache: HIT` (60s TTL)
                   </small>
                 </div>
 
@@ -633,33 +514,14 @@
         </div>
       </section>
 
-      <!-- 7. CALL TO ACTION BANNER -->
-      <section class="py-5">
-        <div class="container">
-          <div class="cta-banner text-center text-md-start">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-md-0">
-                <h2 class="h3 font-heading fw-bold mb-2">Ready to Start Your Academic Journey?</h2>
-                <p class="mb-0 text-white-50">Submit your application now and manage your records via our JWT protected CRUD dashboard.</p>
-              </div>
-              <div class="col-md-4 text-md-end">
-                <a href="#register" class="btn btn-light text-primary font-heading fw-bold px-4 py-2.5">
-                  <i class="bi bi-rocket-takeoff-fill me-1"></i> Apply Today
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 8. CONTACT SECTION -->
+      <!-- 6. CONTACT SECTION -->
       <section id="contact" class="py-5 bg-white border-top">
         <div class="container py-4">
           <div class="row justify-content-center text-center mb-5">
             <div class="col-lg-8">
               <span class="text-primary fw-bold text-uppercase tracking-wider small d-block mb-1">Get in Touch</span>
               <h2 class="display-6 fw-bold mb-3">Contact Academic Support</h2>
-              <p class="text-muted">Have questions regarding admission rules, authentication, or technical submission? Send us a message.</p>
+              <p class="text-muted">Have questions regarding admission rules, OAuth authentication, or API usage? Send us a message.</p>
             </div>
           </div>
 
@@ -716,7 +578,7 @@
                       <label for="subject" class="form-label">Subject / Inquiry Type</label>
                       <select class="form-select" id="subject" name="subject">
                         <option value="General Admission Inquiry">General Admission Inquiry</option>
-                        <option value="User Authentication Help">User Authentication Support</option>
+                        <option value="Task 8 Server Support">Task 8 Server & Cache Support</option>
                         <option value="Technical Support">Technical Support</option>
                       </select>
                     </div>
@@ -739,7 +601,579 @@
 
     </div> <!-- END OF #main-portal-content -->
 
-    <!-- 9. TASK 6: LOGIN ROUTE (#login) -->
+    <!-- ==========================================================================
+         7. TASK 8: BACKGROUND TASKS & JOB PROCESSING QUEUE (#jobs ROUTE)
+         ========================================================================== -->
+    <section id="jobs-section" class="py-5 bg-light min-vh-100" style="display: none;">
+      <div class="container py-4">
+        
+        <!-- Header Banner -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+          <div>
+            <div class="d-inline-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-primary rounded-pill font-mono">Task 8 Background Queue</span>
+              <span class="badge bg-white text-dark border font-mono">Redis / Bull Architecture</span>
+            </div>
+            <h1 class="h3 font-heading fw-bold mb-1">Background Tasks & Job Processing Engine</h1>
+            <p class="text-muted small mb-0">Dispatches non-blocking asynchronous jobs (verification, PDF generation, analytics intelligence, database snapshots) with live progress tracking.</p>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button id="btn-refresh-jobs" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-arrow-clockwise me-1"></i> Refresh Queue
+            </button>
+            <button id="btn-clear-jobs" class="btn btn-outline-danger btn-sm">
+              <i class="bi bi-trash3 me-1"></i> Clear Finished
+            </button>
+          </div>
+        </div>
+
+        <!-- Telemetry Cards -->
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm p-3 bg-white rounded-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <small class="text-muted fw-bold font-mono">ACTIVE WORKERS</small>
+                  <h3 id="jobs-active-workers" class="h4 font-heading fw-bold text-primary mb-0">0 / 2</h3>
+                </div>
+                <div class="p-2 bg-primary-light text-primary rounded-circle"><i class="bi bi-gear-wide-connected fs-5"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm p-3 bg-white rounded-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <small class="text-muted fw-bold font-mono">QUEUED / PENDING</small>
+                  <h3 id="jobs-pending-count" class="h4 font-heading fw-bold text-warning mb-0">0</h3>
+                </div>
+                <div class="p-2 bg-warning-light text-warning rounded-circle"><i class="bi bi-hourglass-split fs-5"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm p-3 bg-white rounded-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <small class="text-muted fw-bold font-mono">COMPLETED</small>
+                  <h3 id="jobs-completed-count" class="h4 font-heading fw-bold text-success mb-0">0</h3>
+                </div>
+                <div class="p-2 bg-success-light text-success rounded-circle"><i class="bi bi-check-circle-fill fs-5"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm p-3 bg-white rounded-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <small class="text-muted fw-bold font-mono">TOTAL ENQUEUED</small>
+                  <h3 id="jobs-total-count" class="h4 font-heading fw-bold text-dark mb-0">0</h3>
+                </div>
+                <div class="p-2 bg-light text-dark rounded-circle border"><i class="bi bi-layers-fill fs-5"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Job Dispatch Actions -->
+        <div class="card border-0 shadow-sm p-4 bg-white rounded-3 mb-4">
+          <h3 class="h6 font-heading fw-bold mb-3 d-flex align-items-center gap-2">
+            <i class="bi bi-plus-circle-fill text-primary"></i> Dispatch New Background Task
+          </h3>
+          <div class="row g-3">
+            <div class="col-md-3">
+              <button class="btn btn-outline-primary w-100 py-3 text-start btn-enqueue-action" data-type="APPLICATION_VERIFICATION">
+                <div class="fw-bold"><i class="bi bi-patch-check-fill me-1"></i> Application Verification</div>
+                <small class="text-muted d-block" style="font-size: 0.72rem;">Runs document check & GPA scoring</small>
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-outline-success w-100 py-3 text-start btn-enqueue-action" data-type="REPORT_GENERATION">
+                <div class="fw-bold"><i class="bi bi-file-earmark-pdf-fill me-1"></i> PDF Report Generation</div>
+                <small class="text-muted d-block" style="font-size: 0.72rem;">Compiles batch admissions bundle</small>
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-outline-warning w-100 py-3 text-start btn-enqueue-action" data-type="DATA_INTELLIGENCE">
+                <div class="fw-bold text-dark"><i class="bi bi-graph-up-arrow me-1"></i> Data Intelligence</div>
+                <small class="text-muted d-block" style="font-size: 0.72rem;">Predictive branch analytics model</small>
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-outline-secondary w-100 py-3 text-start btn-enqueue-action" data-type="DATABASE_BACKUP">
+                <div class="fw-bold"><i class="bi bi-hdd-fill me-1"></i> Database Snapshot</div>
+                <small class="text-muted d-block" style="font-size: 0.72rem;">Exports JSON & SHA-256 hash</small>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Jobs Table Card -->
+        <div class="card border-0 shadow-sm bg-white rounded-3 overflow-hidden">
+          <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+            <h3 class="h6 font-heading fw-bold mb-0">Active & Recent Background Jobs</h3>
+            <span class="badge bg-light text-muted border font-mono">Auto-refreshed every 2s</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light font-heading small text-muted text-uppercase">
+                <tr>
+                  <th style="width: 130px;">Job ID</th>
+                  <th>Task Type</th>
+                  <th>Progress</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                  <th class="text-end" style="width: 120px;">Details</th>
+                </tr>
+              </thead>
+              <tbody id="jobs-table-body">
+                <!-- Rendered dynamically by script.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. TASK 8: SERVER-SIDE CACHE & AUDIT LOG TELEMETRY (#server-cache ROUTE)
+         ========================================================================== -->
+    <section id="server-cache-section" class="py-5 bg-light min-vh-100" style="display: none;">
+      <div class="container py-4">
+        
+        <!-- Header Banner -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+          <div>
+            <div class="d-inline-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-success rounded-pill font-mono">Task 8 Caching & Logs</span>
+              <span class="badge bg-white text-dark border font-mono">&lt; 1ms In-Memory Speed</span>
+            </div>
+            <h1 class="h3 font-heading fw-bold mb-1">Server Caching & Request Processing Telemetry</h1>
+            <p class="text-muted small mb-0">Inspect real-time server-side cache hits/misses, active keys with remaining TTL, and the live structured request audit log.</p>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button id="btn-refresh-cache-data" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-arrow-clockwise me-1"></i> Refresh Stats
+            </button>
+            <button id="btn-flush-server-cache" class="btn btn-outline-danger btn-sm">
+              <i class="bi bi-trash3 me-1"></i> Flush Entire Cache
+            </button>
+          </div>
+        </div>
+
+        <!-- Cache Stats Gauges -->
+        <div class="row g-4 mb-4">
+          <div class="col-lg-5">
+            <div class="card border-0 shadow-sm p-4 bg-white rounded-3 h-100">
+              <h3 class="h6 font-heading fw-bold mb-3 d-flex align-items-center gap-2">
+                <i class="bi bi-lightning-charge-fill text-warning"></i> Cache Efficiency & Hit Ratio
+              </h3>
+
+              <div class="text-center py-3">
+                <div id="cache-hit-ratio-big" class="display-4 fw-bold text-primary font-mono">0.0%</div>
+                <div class="text-muted small">Server Cache Hit Ratio</div>
+              </div>
+
+              <div class="progress mb-3" style="height: 10px;">
+                <div id="cache-hit-progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+
+              <div class="row g-2 text-center small font-mono">
+                <div class="col-4">
+                  <div class="p-2 border rounded bg-light">
+                    <strong id="cache-total-hits" class="d-block text-success">0</strong>
+                    <span class="text-muted" style="font-size: 0.7rem;">Hits (HIT)</span>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="p-2 border rounded bg-light">
+                    <strong id="cache-total-misses" class="d-block text-danger">0</strong>
+                    <span class="text-muted" style="font-size: 0.7rem;">Misses (MISS)</span>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="p-2 border rounded bg-light">
+                    <strong id="cache-total-keys" class="d-block text-dark">0</strong>
+                    <span class="text-muted" style="font-size: 0.7rem;">Active Keys</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3 p-2.5 bg-light rounded text-muted small" style="font-size: 0.75rem;">
+                <i class="bi bi-info-circle-fill text-primary me-1"></i> Cache hits serve JSON payloads instantly with <code>X-Cache: HIT</code> header in &lt;1ms.
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Cache Keys Explorer -->
+          <div class="col-lg-7">
+            <div class="card border-0 shadow-sm p-4 bg-white rounded-3 h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="h6 font-heading fw-bold mb-0 d-flex align-items-center gap-2">
+                  <i class="bi bi-key-fill text-dark"></i> Active Cached Keys & TTL
+                </h3>
+                <span id="cache-keys-count-badge" class="badge bg-primary font-mono">0 Keys</span>
+              </div>
+
+              <div class="table-responsive flex-fill overflow-auto" style="max-height: 250px;">
+                <table class="table table-sm align-middle font-mono small mb-0">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Cache Key</th>
+                      <th>TTL Left</th>
+                      <th>Size</th>
+                      <th class="text-end">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cache-keys-table-body">
+                    <!-- Rendered by script.js -->
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="mt-3 text-muted small" style="font-size: 0.72rem;">
+                <i class="bi bi-shield-check text-success me-1"></i> Write mutations (POST/PUT/DELETE) automatically purge related keys via <code>invalidateCache()</code> middleware.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Request Processing Audit Logs Table -->
+        <div class="card border-0 shadow-sm bg-white rounded-3 overflow-hidden">
+          <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+            <div>
+              <h3 class="h6 font-heading fw-bold mb-0 d-flex align-items-center gap-2">
+                <i class="bi bi-terminal-fill text-dark"></i> Structured Request Audit Logger (X-Request-Id)
+              </h3>
+              <small class="text-muted">High-resolution execution timings calculated via <code>process.hrtime()</code></small>
+            </div>
+            <button id="btn-clear-logs" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-trash3 me-1"></i> Clear Logs
+            </button>
+          </div>
+
+          <div class="table-responsive" style="max-height: 340px; overflow-y: auto;">
+            <table class="table table-hover align-middle font-mono small mb-0">
+              <thead class="table-light sticky-top">
+                <tr style="font-size: 0.75rem;">
+                  <th>Request ID</th>
+                  <th>Timestamp</th>
+                  <th>Method & Route</th>
+                  <th>Status</th>
+                  <th>Duration</th>
+                  <th>X-Cache</th>
+                  <th>Client IP</th>
+                </tr>
+              </thead>
+              <tbody id="server-logs-table-body">
+                <!-- Rendered by script.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         9. TASK 7: EXTERNAL REST API DASHBOARD (#external-api ROUTE)
+         ========================================================================== -->
+    <section id="external-api-section" class="py-5 bg-light min-vh-100" style="display: none;">
+      <div class="container py-4">
+        
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+          <div>
+            <div class="d-inline-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-success rounded-pill font-mono">Task 7 External APIs</span>
+              <span class="badge bg-white text-dark border font-mono">Live HTTP Fetching</span>
+            </div>
+            <h1 class="h3 font-heading fw-bold mb-1">External REST API Integration Hub</h1>
+            <p class="text-muted small mb-0">Fetches live data from Open-Meteo & GitHub REST APIs with caching, timeouts, and graceful fallbacks.</p>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button id="btn-clear-api-cache" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-trash3 me-1"></i> Clear API Cache
+            </button>
+          </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+          <!-- Live Weather Widget -->
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100 rounded-3 p-4 bg-white">
+              <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="p-2 bg-primary-light text-primary rounded-3">
+                    <i class="bi bi-cloud-sun-fill fs-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="h6 font-heading fw-bold mb-0">Live Campus Weather API</h3>
+                    <small class="text-muted font-mono">Open-Meteo REST Service</small>
+                  </div>
+                </div>
+                <span id="weather-cache-badge" class="badge bg-success font-mono">Live API</span>
+              </div>
+
+              <div class="row g-2 mb-3">
+                <div class="col-8">
+                  <select id="weather-city-select" class="form-select form-select-sm">
+                    <option value="Chennai" selected>Chennai Campus (Tamil Nadu)</option>
+                    <option value="Bengaluru">Bengaluru Tech Campus (Karnataka)</option>
+                    <option value="Mumbai">Mumbai Western Campus (Maharashtra)</option>
+                    <option value="Delhi">Delhi Capital Campus (Delhi)</option>
+                    <option value="Hyderabad">Hyderabad Cyber Campus (Telangana)</option>
+                  </select>
+                </div>
+                <div class="col-4">
+                  <button id="btn-fetch-weather" class="btn btn-custom-primary btn-sm w-100">
+                    <i class="bi bi-arrow-clockwise me-1"></i> Fetch
+                  </button>
+                </div>
+              </div>
+
+              <div id="weather-loading" class="text-center py-4 d-none">
+                <div class="spinner-border spinner-border-sm text-primary mb-2" role="status"></div>
+                <div class="text-muted small">Fetching live weather payload...</div>
+              </div>
+
+              <div id="weather-display" class="p-3 bg-light rounded-3 border">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <div>
+                    <h4 id="weather-city-name" class="h5 fw-bold mb-0 text-dark">Chennai Campus</h4>
+                    <small id="weather-state" class="text-muted">Tamil Nadu, India</small>
+                  </div>
+                  <div class="text-end">
+                    <div id="weather-temp" class="display-6 fw-bold text-primary font-mono">--°C</div>
+                    <span id="weather-condition" class="badge bg-info-light text-info font-mono">Fetching...</span>
+                  </div>
+                </div>
+
+                <div class="row g-2 text-muted small border-top pt-2 mt-2 font-mono" style="font-size: 0.75rem;">
+                  <div class="col-6"><i class="bi bi-wind me-1 text-primary"></i> Wind: <span id="weather-wind">-- km/h</span></div>
+                  <div class="col-6"><i class="bi bi-droplet-fill me-1 text-info"></i> Humidity: <span id="weather-humidity">--%</span></div>
+                  <div class="col-6"><i class="bi bi-clock-history me-1 text-warning"></i> Latency: <span id="weather-latency">-- ms</span></div>
+                  <div class="col-6"><i class="bi bi-hdd me-1 text-success"></i> Status: <span id="weather-status">Ready</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rate Limiting Health -->
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100 rounded-3 p-4 bg-white">
+              <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="p-2 bg-warning-light text-warning rounded-3">
+                    <i class="bi bi-speedometer2 fs-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="h6 font-heading fw-bold mb-0">Rate Limit Protection Monitor</h3>
+                    <small class="text-muted font-mono">express-rate-limit Telemetry</small>
+                  </div>
+                </div>
+                <span class="badge bg-warning text-dark font-mono">Strict Protection</span>
+              </div>
+
+              <p class="text-muted small mb-3">
+                Rate limiting safeguards server endpoints against denial-of-service. General routes allow 100 requests/15m, while Auth and External routes permit 15 requests/15m.
+              </p>
+
+              <div class="p-3 bg-light rounded-3 border mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1 small font-mono">
+                  <span>Current IP Request Health</span>
+                  <span id="rate-limit-remaining-text" class="fw-bold text-success">15 / 15 Requests</span>
+                </div>
+                <div class="progress mb-2" style="height: 8px;">
+                  <div id="rate-limit-progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="d-flex justify-content-between text-muted small" style="font-size: 0.7rem;">
+                  <span>Window: 15 Minutes</span>
+                  <span>Header: <code>RateLimit-Remaining</code></span>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button id="btn-check-rate-limit" class="btn btn-outline-primary btn-sm flex-fill">
+                  <i class="bi bi-activity me-1"></i> Check Telemetry Status
+                </button>
+                <button id="btn-test-rate-limit-burst" class="btn btn-outline-danger btn-sm flex-fill">
+                  <i class="bi bi-lightning-fill me-1"></i> Test Burst (HTTP 429)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic Repos -->
+        <div class="card border-0 shadow-sm rounded-3 p-4 bg-white">
+          <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between pb-3 mb-3 border-bottom gap-2">
+            <div class="d-flex align-items-center gap-2">
+              <div class="p-2 bg-dark text-white rounded-3">
+                <i class="bi bi-github fs-5"></i>
+              </div>
+              <div>
+                <h3 class="h6 font-heading fw-bold mb-0">Academic & Tech GitHub Repositories REST API</h3>
+                <small class="text-muted font-mono">https://api.github.com/search/repositories</small>
+              </div>
+            </div>
+
+            <div class="d-flex gap-1 overflow-auto pb-1">
+              <button class="btn btn-sm btn-outline-primary active repo-topic-btn" data-topic="web-development">Web Dev</button>
+              <button class="btn btn-sm btn-outline-primary repo-topic-btn" data-topic="react">React</button>
+              <button class="btn btn-sm btn-outline-primary repo-topic-btn" data-topic="express">Express</button>
+              <button class="btn btn-sm btn-outline-primary repo-topic-btn" data-topic="algorithms">Algorithms</button>
+            </div>
+          </div>
+
+          <div id="repos-loading" class="text-center py-5">
+            <div class="spinner-border text-primary mb-2" role="status"></div>
+            <p class="text-muted small">Fetching academic software repositories from GitHub REST API...</p>
+          </div>
+
+          <div id="repos-grid" class="row g-3 d-none"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         10. TASK 7: INTERACTIVE OAUTH 2.0 FLOW EXPLORER (#oauth-demo ROUTE)
+         ========================================================================== -->
+    <section id="oauth-demo-section" class="py-5 bg-light min-vh-100" style="display: none;">
+      <div class="container py-4">
+        
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+          <div>
+            <div class="d-inline-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-primary rounded-pill font-mono">Task 7 OAuth 2.0</span>
+              <span class="badge bg-white text-dark border font-mono">Authorization Code Grant</span>
+            </div>
+            <h1 class="h3 font-heading fw-bold mb-1">Interactive OAuth 2.0 Flow Explorer</h1>
+            <p class="text-muted small mb-0">Simulates standard 3-legged OAuth 2.0: Client Authorization &rarr; Code Issuance &rarr; Token Exchange &rarr; Resource Access.</p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="card border-0 shadow-sm rounded-3 p-4 bg-white mb-4">
+              
+              <div class="d-flex justify-content-between align-items-center mb-4 position-relative">
+                <div class="progress position-absolute w-100" style="height: 3px; top: 50%; z-index: 0;">
+                  <div id="oauth-progress-bar" class="progress-bar bg-primary" style="width: 25%;"></div>
+                </div>
+                
+                <div id="oauth-step1-badge" class="position-relative z-1 badge rounded-circle bg-primary text-white p-2" style="width: 36px; height: 36px; line-height: 20px;">1</div>
+                <div id="oauth-step2-badge" class="position-relative z-1 badge rounded-circle bg-secondary text-white p-2" style="width: 36px; height: 36px; line-height: 20px;">2</div>
+                <div id="oauth-step3-badge" class="position-relative z-1 badge rounded-circle bg-secondary text-white p-2" style="width: 36px; height: 36px; line-height: 20px;">3</div>
+                <div id="oauth-step4-badge" class="position-relative z-1 badge rounded-circle bg-secondary text-white p-2" style="width: 36px; height: 36px; line-height: 20px;">4</div>
+              </div>
+
+              <!-- STEP 1 -->
+              <div id="oauth-step1-box">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <span class="badge bg-primary">Step 1</span>
+                  <h3 class="h5 font-heading fw-bold mb-0">Client Application Authorization Request</h3>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Client ID</label>
+                    <input type="text" id="oauth-client-id" class="form-control form-control-sm font-mono" value="cognifyz_app_2026" readonly>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Redirect URI</label>
+                    <input type="text" id="oauth-redirect-uri" class="form-control form-control-sm font-mono" value="http://localhost:3000/#oauth-demo" readonly>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Scope</label>
+                    <input type="text" id="oauth-scope" class="form-control form-control-sm font-mono" value="read:profile read:courses">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">State</label>
+                    <input type="text" id="oauth-state" class="form-control form-control-sm font-mono" value="xyz_sec_99182" readonly>
+                  </div>
+                </div>
+
+                <button id="btn-oauth-step1" class="btn btn-custom-primary w-100 py-2.5 font-heading fw-bold">
+                  <i class="bi bi-box-arrow-up-right me-1"></i> 1. Request Authorization Code
+                </button>
+              </div>
+
+              <!-- STEP 2 -->
+              <div id="oauth-step2-box" class="d-none">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <span class="badge bg-success">Step 2</span>
+                  <h3 class="h5 font-heading fw-bold mb-0">Authorization Code Granted & Secret Verification</h3>
+                </div>
+                
+                <div class="alert alert-success py-2 px-3 small font-mono mb-3">
+                  <i class="bi bi-check-circle-fill me-1"></i> <strong>Authorization Code:</strong>
+                  <div id="oauth-code-display" class="fw-bold mt-1 text-truncate">code_auth_...</div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label small fw-bold">Client Secret</label>
+                  <input type="password" id="oauth-client-secret" class="form-control form-control-sm font-mono" value="secret_key_cognifyz_99">
+                </div>
+
+                <button id="btn-oauth-step2" class="btn btn-success w-100 py-2 font-heading fw-bold">
+                  <i class="bi bi-arrow-repeat me-1"></i> 2. Exchange Code for Access Token
+                </button>
+              </div>
+
+              <!-- STEP 3 -->
+              <div id="oauth-step3-box" class="d-none">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <span class="badge bg-warning text-dark">Step 3 & 4</span>
+                  <h3 class="h5 font-heading fw-bold mb-0">OAuth Access Token & Resource</h3>
+                </div>
+
+                <div class="p-3 bg-light rounded-3 border mb-3 font-mono small">
+                  <div class="text-muted" style="font-size: 0.7rem;">OAuth 2.0 Bearer Token:</div>
+                  <div id="oauth-access-token-display" class="fw-bold text-primary text-truncate my-1">access_token_...</div>
+                </div>
+
+                <button id="btn-oauth-step3" class="btn btn-custom-primary w-100 py-2.5 font-heading fw-bold mb-2">
+                  <i class="bi bi-shield-check me-1"></i> 3. Fetch Protected Resource
+                </button>
+                
+                <button id="btn-oauth-reset" class="btn btn-outline-secondary btn-sm w-100">
+                  <i class="bi bi-arrow-counterclockwise me-1"></i> Reset Sandbox
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="card border-0 shadow-sm rounded-3 p-4 bg-white h-100">
+              <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom">
+                <h3 class="h6 font-heading fw-bold mb-0 d-flex align-items-center gap-2">
+                  <i class="bi bi-terminal-fill text-dark"></i> Protocol Inspector
+                </h3>
+                <span class="badge bg-dark font-mono">Live HTTP Telemetry</span>
+              </div>
+
+              <div class="bg-dark text-white p-3 rounded-3 font-mono overflow-auto flex-fill" style="max-height: 400px; font-size: 0.75rem;">
+                <div class="text-secondary border-bottom border-secondary pb-1 mb-2">// OAuth 2.0 Protocol Trace Log</div>
+                <pre id="oauth-inspector-output" class="text-success mb-0" style="white-space: pre-wrap; word-break: break-all;">Click "Request Authorization Code" to start tracing...</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 11. LOGIN ROUTE (#login) -->
     <section id="login-section" class="py-5 bg-light min-vh-100 d-flex align-items-center" style="display: none;">
       <div class="container py-4">
         <div class="row justify-content-center">
@@ -753,15 +1187,14 @@
                 <p class="text-muted small mb-0">Log in to obtain a JWT authorization token and manage records.</p>
               </div>
 
-              <!-- Demo Credentials Box -->
               <div class="p-3 bg-light rounded border mb-4 small font-mono">
                 <div class="fw-bold text-dark mb-1">Demo Credentials:</div>
                 <div class="d-flex justify-content-between text-muted">
-                  <span>Admin Email: <code>admin@college.edu</code></span>
+                  <span>Admin: <code>admin@college.edu</code></span>
                   <span>Pass: <code>Admin@12345</code></span>
                 </div>
                 <div class="d-flex justify-content-between text-muted">
-                  <span>User Email: <code>user@college.edu</code></span>
+                  <span>User: <code>user@college.edu</code></span>
                   <span>Pass: <code>User@12345</code></span>
                 </div>
               </div>
@@ -769,19 +1202,15 @@
               <form id="login-form" novalidate>
                 <div class="mb-3">
                   <label for="login-email" class="form-label small fw-bold">Email Address <span class="text-danger">*</span></label>
-                  <div class="input-group">
-                    <span class="input-group-text bg-light"><i class="bi bi-envelope text-muted"></i></span>
-                    <input type="email" class="form-control" id="login-email" placeholder="Enter account email" required>
-                  </div>
+                  <input type="email" class="form-control" id="login-email" placeholder="Enter account email" required>
                   <div id="login-email-error" class="invalid-feedback"></div>
                 </div>
 
                 <div class="mb-4">
                   <label for="login-password" class="form-label small fw-bold">Password <span class="text-danger">*</span></label>
                   <div class="input-group">
-                    <span class="input-group-text bg-light"><i class="bi bi-lock text-muted"></i></span>
                     <input type="password" class="form-control" id="login-password" placeholder="Enter account password" required>
-                    <button class="btn btn-outline-secondary" type="button" id="toggle-login-password" aria-label="Show Password">
+                    <button class="btn btn-outline-secondary" type="button" id="toggle-login-password">
                       <i class="bi bi-eye-fill"></i>
                     </button>
                   </div>
@@ -793,7 +1222,7 @@
               </form>
 
               <div class="text-center pt-3 border-top small">
-                <span class="text-muted">Don't have an account yet?</span>
+                <span class="text-muted">Don't have an account?</span>
                 <a href="#user-register" class="text-primary fw-bold text-decoration-none ms-1">Register Account</a>
               </div>
             </div>
@@ -802,7 +1231,7 @@
       </div>
     </section>
 
-    <!-- 10. TASK 6: ACCOUNT REGISTRATION ROUTE (#user-register) -->
+    <!-- 12. ACCOUNT REGISTRATION ROUTE (#user-register) -->
     <section id="user-register-section" class="py-5 bg-light min-vh-100 d-flex align-items-center" style="display: none;">
       <div class="container py-4">
         <div class="row justify-content-center">
@@ -819,28 +1248,21 @@
               <form id="user-register-form" novalidate>
                 <div class="mb-3">
                   <label for="reg-acc-name" class="form-label small fw-bold">Full Name <span class="text-danger">*</span></label>
-                  <div class="input-group">
-                    <span class="input-group-text bg-light"><i class="bi bi-person text-muted"></i></span>
-                    <input type="text" class="form-control" id="reg-acc-name" placeholder="Enter your full name" required>
-                  </div>
+                  <input type="text" class="form-control" id="reg-acc-name" placeholder="Enter your full name" required>
                   <div id="reg-acc-name-error" class="invalid-feedback"></div>
                 </div>
 
                 <div class="mb-3">
                   <label for="reg-acc-email" class="form-label small fw-bold">Email Address <span class="text-danger">*</span></label>
-                  <div class="input-group">
-                    <span class="input-group-text bg-light"><i class="bi bi-envelope text-muted"></i></span>
-                    <input type="email" class="form-control" id="reg-acc-email" placeholder="e.g. name@domain.com" required>
-                  </div>
+                  <input type="email" class="form-control" id="reg-acc-email" placeholder="e.g. name@domain.com" required>
                   <div id="reg-acc-email-error" class="invalid-feedback"></div>
                 </div>
 
                 <div class="mb-4">
                   <label for="reg-acc-password" class="form-label small fw-bold">Password <span class="text-danger">*</span></label>
                   <div class="input-group">
-                    <span class="input-group-text bg-light"><i class="bi bi-lock text-muted"></i></span>
                     <input type="password" class="form-control" id="reg-acc-password" placeholder="Create password (min 8 chars)" required>
-                    <button class="btn btn-outline-secondary" type="button" id="toggle-reg-acc-password" aria-label="Show Password">
+                    <button class="btn btn-outline-secondary" type="button" id="toggle-reg-acc-password">
                       <i class="bi bi-eye-fill"></i>
                     </button>
                   </div>
@@ -862,19 +1284,18 @@
       </div>
     </section>
 
-    <!-- 11. REGISTRATION MANAGEMENT CRUD DASHBOARD (#dashboard ROUTE) -->
+    <!-- 13. CRUD DASHBOARD (#dashboard ROUTE) -->
     <section id="dashboard-section" class="py-5 bg-light min-vh-100" style="display: none;">
       <div class="container py-4">
         
-        <!-- Header Title Banner -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
           <div>
             <div class="d-inline-flex align-items-center gap-2 mb-1">
-              <span class="badge bg-primary rounded-pill font-mono">Task 6 Auth & CRUD</span>
+              <span class="badge bg-primary rounded-pill font-mono">Cached REST API</span>
               <span id="dashboard-total-count" class="badge bg-white text-dark border font-mono">0 Total Records</span>
             </div>
             <h1 class="h3 font-heading fw-bold mb-1">Registration Management Dashboard</h1>
-            <p class="text-muted small mb-0">Perform protected REST API CRUD operations (`GET`, `POST`, `PUT`, `DELETE`) with JWT authorization.</p>
+            <p class="text-muted small mb-0">Protected CRUD operations with 60s server caching (`X-Cache`) and automatic mutation invalidation.</p>
           </div>
 
           <div class="d-flex gap-2">
@@ -882,84 +1303,51 @@
               <i class="bi bi-arrow-clockwise me-1"></i> Refresh Data
             </button>
             <a href="#register" class="btn btn-custom-primary">
-              <i class="bi bi-plus-circle me-1"></i> Add New Registration
+              <i class="bi bi-plus-circle me-1"></i> Add Registration
             </a>
           </div>
         </div>
 
-        <!-- Dashboard Control Bar (Search Filter) -->
         <div class="card border-0 shadow-sm rounded-3 mb-4 p-3 bg-white">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-7 col-lg-8">
-              <div class="input-group">
-                <span class="input-group-text bg-light"><i class="bi bi-search text-muted"></i></span>
-                <input 
-                  type="text" 
-                  id="dashboard-search" 
-                  class="form-control" 
-                  placeholder="Search registrations by name, email, phone, or course..."
-                >
-              </div>
-            </div>
-            <div class="col-md-5 col-lg-4 text-md-end">
-              <small class="text-muted font-mono"><i class="bi bi-shield-check text-success me-1"></i> Protected Route `/api/registrations`</small>
-            </div>
+          <div class="input-group">
+            <span class="input-group-text bg-light"><i class="bi bi-search text-muted"></i></span>
+            <input type="text" id="dashboard-search" class="form-control" placeholder="Search registrations by name, email, phone, or course...">
           </div>
         </div>
 
-        <!-- Dashboard Table Card -->
         <div class="card border-0 shadow-lg rounded-3 overflow-hidden bg-white">
-          
-          <!-- Loading State Indicator -->
           <div id="dashboard-loading" class="text-center py-5">
-            <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
+            <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
             <p class="text-muted fw-semibold mb-0">Fetching records from REST API...</p>
           </div>
 
-          <!-- Empty State -->
           <div id="dashboard-empty" class="text-center py-5" style="display: none;">
             <div class="d-inline-flex align-items-center justify-content-center w-16 h-16 rounded-circle bg-light text-muted mb-3" style="width: 64px; height: 64px; font-size: 2rem;">
               <i class="bi bi-inbox"></i>
             </div>
             <h3 class="h5 font-heading fw-bold mb-1">No Registrations Found</h3>
-            <p class="text-muted small mb-3">There are no records in the persistent database or no results matching your search query.</p>
-            <a href="#register" class="btn btn-sm btn-custom-primary">
-              <i class="bi bi-plus-circle me-1"></i> Add New Registration
-            </a>
           </div>
 
-          <!-- Error State -->
           <div id="dashboard-error" class="text-center py-5 px-3" style="display: none;">
-            <div class="d-inline-flex align-items-center justify-content-center w-16 h-16 rounded-circle bg-danger-light text-danger mb-3" style="width: 64px; height: 64px; font-size: 2rem;">
-              <i class="bi bi-exclamation-octagon-fill"></i>
-            </div>
             <h3 class="h5 font-heading fw-bold text-danger mb-1">API Communication Error</h3>
             <p id="dashboard-error-message" class="text-muted small mb-3">Unable to connect to REST API server.</p>
-            <button class="btn btn-sm btn-outline-danger" onclick="location.reload()">
-              <i class="bi bi-arrow-clockwise me-1"></i> Retry Server Connection
-            </button>
           </div>
 
-          <!-- Dynamic Registrations Table -->
           <div class="table-responsive">
             <table class="table table-hover mb-0">
-              <thead class="table-light border-bottom font-heading">
-                <tr class="small text-muted text-uppercase tracking-wider">
-                  <th scope="col" style="width: 50px;">#</th>
-                  <th scope="col">Student Name & ID</th>
-                  <th scope="col">Email Address</th>
-                  <th scope="col">Phone Number</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Course</th>
-                  <th scope="col">Submitted Date</th>
-                  <th scope="col" class="text-end" style="width: 170px;">Actions</th>
+              <thead class="table-light border-bottom font-heading small text-muted text-uppercase">
+                <tr>
+                  <th style="width: 50px;">#</th>
+                  <th>Student Name & ID</th>
+                  <th>Email Address</th>
+                  <th>Phone Number</th>
+                  <th>Age</th>
+                  <th>Course</th>
+                  <th>Submitted Date</th>
+                  <th class="text-end" style="width: 170px;">Actions</th>
                 </tr>
               </thead>
-              <tbody id="dashboard-table-body">
-                <!-- Dynamically Rendered by script.js -->
-              </tbody>
+              <tbody id="dashboard-table-body"></tbody>
             </table>
           </div>
         </div>
@@ -967,7 +1355,7 @@
       </div>
     </section>
 
-    <!-- 12. SUCCESS SECTION (#success ROUTE) -->
+    <!-- 14. SUCCESS SECTION (#success ROUTE) -->
     <section id="success-section" class="py-5 bg-light min-vh-100 d-flex align-items-center" style="display: none;">
       <div class="container py-4">
         <div class="row justify-content-center">
@@ -982,40 +1370,22 @@
               <h1 class="display-6 font-heading fw-bold mb-2">Registration Successful!</h1>
               <h2 class="h4 text-primary fw-semibold mb-3">Welcome, <span id="success-name">Student</span>!</h2>
               
-              <p class="text-muted mb-4">
-                Your student registration details have been validated and saved persistently via JWT Authorized `POST /api/registrations`.
-              </p>
-
               <div class="card bg-light border-0 rounded-3 text-start mb-4 p-3 p-md-4">
-                <h3 class="h6 font-heading fw-bold text-uppercase text-muted tracking-wider mb-3">API Record Details Summary</h3>
                 <dl class="row mb-0 small">
                   <dt class="col-sm-4 text-muted">Full Name:</dt>
                   <dd class="col-sm-8 fw-semibold text-dark mb-2" id="success-detail-name">-</dd>
-
                   <dt class="col-sm-4 text-muted">Email Address:</dt>
                   <dd class="col-sm-8 fw-semibold text-dark mb-2" id="success-detail-email">-</dd>
-
-                  <dt class="col-sm-4 text-muted">Phone Number:</dt>
-                  <dd class="col-sm-8 fw-semibold text-dark mb-2" id="success-detail-phone">-</dd>
-
-                  <dt class="col-sm-4 text-muted">Age:</dt>
-                  <dd class="col-sm-8 fw-semibold text-dark mb-2" id="success-detail-age">-</dd>
-
-                  <dt class="col-sm-4 text-muted">Selected Course:</dt>
+                  <dt class="col-sm-4 text-muted">Course:</dt>
                   <dd class="col-sm-8 fw-semibold text-dark mb-2" id="success-detail-course">-</dd>
-
                   <dt class="col-sm-4 text-muted">Created At:</dt>
                   <dd class="col-sm-8 font-mono text-muted mb-0" id="success-timestamp">-</dd>
                 </dl>
               </div>
 
-              <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-                <a href="#dashboard" class="btn btn-custom-primary px-4 py-2.5">
-                  <i class="bi bi-database me-1"></i> View CRUD Dashboard
-                </a>
-                <a href="#register" class="btn btn-custom-secondary px-4 py-2.5">
-                  <i class="bi bi-pencil-square me-1"></i> Submit Another Application
-                </a>
+              <div class="d-flex justify-content-center gap-3">
+                <a href="#dashboard" class="btn btn-custom-primary px-4 py-2.5"><i class="bi bi-database me-1"></i> View Dashboard</a>
+                <a href="#register" class="btn btn-custom-secondary px-4 py-2.5"><i class="bi bi-pencil-square me-1"></i> Submit Another</a>
               </div>
 
             </div>
@@ -1024,7 +1394,7 @@
       </div>
     </section>
 
-    <!-- 13. 404 NOT FOUND SECTION (INVALID ROUTE HANDLER) -->
+    <!-- 15. 404 NOT FOUND SECTION -->
     <section id="not-found-section" class="py-5 bg-light min-vh-100 d-flex align-items-center" style="display: none;">
       <div class="container py-4">
         <div class="row justify-content-center text-center">
@@ -1032,16 +1402,9 @@
             <div class="registration-card shadow-lg border-0 py-5">
               <div class="display-1 fw-bold text-primary font-mono mb-2">404</div>
               <h2 class="h3 font-heading fw-bold mb-3">Page Route Not Found</h2>
-              <p class="text-muted mb-4">
-                The hash route you entered does not exist or has moved. Please navigate using the portal links below.
-              </p>
               <div class="d-flex justify-content-center gap-3">
-                <a href="#home" class="btn btn-custom-primary px-4">
-                  <i class="bi bi-house-door me-1"></i> Go to Home
-                </a>
-                <a href="#dashboard" class="btn btn-custom-secondary px-4">
-                  <i class="bi bi-database me-1"></i> Go to Dashboard
-                </a>
+                <a href="#home" class="btn btn-custom-primary px-4"><i class="bi bi-house-door me-1"></i> Home</a>
+                <a href="#jobs" class="btn btn-custom-secondary px-4"><i class="bi bi-cpu me-1"></i> Task Queue</a>
               </div>
             </div>
           </div>
@@ -1051,48 +1414,38 @@
 
   </main>
 
-  <!-- EDIT REGISTRATION MODAL (Protected PUT /api/registrations/:id) -->
+  <!-- EDIT REGISTRATION MODAL -->
   <div class="modal fade" id="editRegistrationModal" tabindex="-1" aria-labelledby="editRegistrationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow-lg">
         <div class="modal-header bg-light">
-          <h5 class="modal-title font-heading fw-bold" id="editRegistrationModalLabel">
-            <i class="bi bi-pencil-square text-primary me-2"></i>Edit Student Registration
-          </h5>
+          <h5 class="modal-title font-heading fw-bold" id="editRegistrationModalLabel">Edit Student Registration</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         
         <form id="edit-registration-form" novalidate>
           <div class="modal-body p-4">
             <input type="hidden" id="edit-id">
-
             <div class="mb-3">
-              <label for="edit-name" class="form-label small fw-bold">Full Name <span class="text-danger">*</span></label>
+              <label for="edit-name" class="form-label small fw-bold">Full Name</label>
               <input type="text" class="form-control" id="edit-name" required>
-              <div id="edit-name-error" class="invalid-feedback"></div>
             </div>
-
             <div class="mb-3">
-              <label for="edit-email" class="form-label small fw-bold">Email Address <span class="text-danger">*</span></label>
+              <label for="edit-email" class="form-label small fw-bold">Email Address</label>
               <input type="email" class="form-control" id="edit-email" required>
-              <div id="edit-email-error" class="invalid-feedback"></div>
             </div>
-
             <div class="row g-3 mb-3">
               <div class="col-md-7">
-                <label for="edit-phone" class="form-label small fw-bold">Phone (10-Digit) <span class="text-danger">*</span></label>
+                <label for="edit-phone" class="form-label small fw-bold">Phone</label>
                 <input type="tel" class="form-control" id="edit-phone" maxlength="10" required>
-                <div id="edit-phone-error" class="invalid-feedback"></div>
               </div>
               <div class="col-md-5">
-                <label for="edit-age" class="form-label small fw-bold">Age <span class="text-danger">*</span></label>
+                <label for="edit-age" class="form-label small fw-bold">Age</label>
                 <input type="number" class="form-control" id="edit-age" min="16" max="100" required>
-                <div id="edit-age-error" class="invalid-feedback"></div>
               </div>
             </div>
-
             <div class="mb-3">
-              <label for="edit-course" class="form-label small fw-bold">Engineering Course <span class="text-danger">*</span></label>
+              <label for="edit-course" class="form-label small fw-bold">Course</label>
               <select class="form-select" id="edit-course" required>
                 <option value="B.E. Electronics and Communication Engineering">B.E. Electronics and Communication Engineering</option>
                 <option value="B.E. Computer Science and Engineering">B.E. Computer Science and Engineering</option>
@@ -1100,22 +1453,18 @@
                 <option value="B.E. Mechanical Engineering">B.E. Mechanical Engineering</option>
                 <option value="B.E. Electrical and Electronics Engineering">B.E. Electrical and Electronics Engineering</option>
               </select>
-              <div id="edit-course-error" class="invalid-feedback"></div>
             </div>
           </div>
-
           <div class="modal-footer bg-light">
             <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" id="edit-save-btn" class="btn btn-custom-primary btn-sm px-4">
-              <i class="bi bi-save me-1"></i> Save Changes
-            </button>
+            <button type="submit" id="edit-save-btn" class="btn btn-custom-primary btn-sm px-4">Save Changes</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 
-  <!-- DELETE CONFIRMATION MODAL (Protected DELETE /api/registrations/:id) -->
+  <!-- DELETE CONFIRMATION MODAL -->
   <div class="modal fade" id="deleteRegistrationModal" tabindex="-1" aria-labelledby="deleteRegistrationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content border-0 shadow-lg text-center">
@@ -1124,48 +1473,73 @@
             <i class="bi bi-trash-fill"></i>
           </div>
           <h5 class="h6 font-heading fw-bold mb-2">Delete Registration?</h5>
-          <p class="text-muted small mb-3">
-            Are you sure you want to permanently delete registration for <strong id="delete-confirm-name" class="text-dark">Student</strong>?
-          </p>
+          <p class="text-muted small mb-3">Delete registration for <strong id="delete-confirm-name" class="text-dark">Student</strong>?</p>
           <div class="d-flex justify-content-center gap-2">
             <button type="button" class="btn btn-light btn-sm px-3" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" id="delete-confirm-btn" class="btn btn-danger btn-sm px-3">
-              <i class="bi bi-trash-fill me-1"></i> Confirm Delete
-            </button>
+            <button type="button" id="delete-confirm-btn" class="btn btn-danger btn-sm px-3">Confirm Delete</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 14. FOOTER SECTION -->
+  <!-- JOB DETAILS MODAL -->
+  <div class="modal fade" id="jobDetailsModal" tabindex="-1" aria-labelledby="jobDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title font-heading fw-bold" id="jobDetailsModalLabel">
+            <i class="bi bi-cpu text-primary me-2"></i>Job Lifecycle & Result Output
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4 font-mono small">
+          <div class="mb-3 pb-2 border-bottom">
+            <strong class="d-block text-dark">Job ID: <span id="modal-job-id" class="text-primary">-</span></strong>
+            <span class="text-muted">Type: <span id="modal-job-type" class="fw-bold text-dark">-</span></span>
+          </div>
+
+          <div class="mb-3">
+            <strong class="d-block text-dark mb-1">Execution Result Payload:</strong>
+            <pre id="modal-job-result" class="bg-light p-3 rounded border text-success mb-0" style="max-height: 160px; overflow: auto;">None</pre>
+          </div>
+
+          <div>
+            <strong class="d-block text-dark mb-1">Task Lifecycle Execution Logs:</strong>
+            <pre id="modal-job-logs" class="bg-dark text-white p-3 rounded mb-0" style="max-height: 140px; overflow: auto;">No logs</pre>
+          </div>
+        </div>
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16. FOOTER SECTION -->
   <footer class="footer-section">
     <div class="container">
       <div class="row g-4 mb-4">
         <div class="col-lg-5">
           <div class="d-flex align-items-center gap-2 mb-3">
             <div class="navbar-brand-badge" style="width: 34px; height: 34px; font-size: 1rem;">
-              <i class="bi bi-shield-lock-fill"></i>
+              <i class="bi bi-cpu-fill"></i>
             </div>
             <span class="font-heading fw-bold fs-5 text-white">EduPortal</span>
           </div>
           <p class="text-muted small pe-lg-4 mb-3">
-            Enterprise Academic System engineered with database integration, bcrypt password encryption, and JWT authorization checks.
+            Enterprise Academic System engineered with advanced request processing middleware, asynchronous background task queues, and server-side caching.
           </p>
-          <div class="d-flex gap-2">
-            <a href="#" class="social-icon-btn" aria-label="Github Repository"><i class="bi bi-github"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Twitter Profile"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="LinkedIn Profile"><i class="bi bi-linkedin"></i></a>
-          </div>
         </div>
 
         <div class="col-6 col-md-3 col-lg-3">
           <h5>Quick Shortcuts</h5>
           <ul class="list-unstyled">
             <li><a href="#home" class="footer-link">Home Portal</a></li>
-            <li><a href="#about" class="footer-link">About Institution</a></li>
-            <li><a href="#features" class="footer-link">Platform Features</a></li>
-            <li><a href="#courses" class="footer-link">Degree Courses</a></li>
+            <li><a href="#jobs" class="footer-link">Background Task Queue</a></li>
+            <li><a href="#server-cache" class="footer-link">Server Cache & Audit Logs</a></li>
+            <li><a href="#external-api" class="footer-link">External REST APIs</a></li>
+            <li><a href="#oauth-demo" class="footer-link">OAuth 2.0 Sandbox</a></li>
           </ul>
         </div>
 
@@ -1176,14 +1550,14 @@
             <li><a href="#dashboard" class="footer-link">CRUD Dashboard</a></li>
             <li><a href="#login" class="footer-link">User Login</a></li>
             <li><a href="#user-register" class="footer-link">Register Account</a></li>
-            <li><span class="footer-link text-muted font-mono" style="font-size: 0.8rem;">Task 6 - Auth & DB Integration</span></li>
+            <li><span class="footer-link text-muted font-mono" style="font-size: 0.8rem;">Task 8 — Advanced Server-Side</span></li>
           </ul>
         </div>
       </div>
 
       <div class="pt-3 border-top border-secondary d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 small">
-        <p class="mb-0">&copy; 2026 Student Academic Portal. Built for Level 3 Task 6 — Database Integration & User Authentication.</p>
-        <span class="font-mono text-muted">Express + JWT + bcryptjs + EJS</span>
+        <p class="mb-0">&copy; 2026 Student Academic Portal. Built for Level 3 Task 8 — Advanced Server-Side Where Data Meets Intelligence.</p>
+        <span class="font-mono text-muted">Express + Middleware + Queue + Cache</span>
       </div>
     </div>
   </footer>
@@ -1191,7 +1565,7 @@
   <!-- Bootstrap 5 Bundle JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-  <!-- Task 6 Client-Side Script -->
+  <!-- Task 8 Client-Side Script -->
   <script src="/js/script.js"></script>
 </body>
 </html>

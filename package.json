@@ -1,22 +1,23 @@
 {
-  "name": "task6-db-authentication",
+  "name": "task8-advanced-serverside",
   "version": "1.0.0",
-  "description": "Level 3 Task 6 - Database Integration and Server User Authentication (JWT + Password Hashing + Authorization Checks)",
+  "description": "Level 3 Task 8 - Advanced Server-Side Where Data Meets Intelligence (Middleware, Background Task Queue & Server-Side Caching)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "keywords": [
     "express",
-    "ejs",
+    "middleware",
+    "logging",
+    "background-jobs",
+    "task-queue",
+    "caching",
     "rest-api",
     "authentication",
     "jwt",
     "bcrypt",
-    "authorization",
-    "database",
-    "form-validation",
-    "spa"
+    "rate-limiting"
   ],
   "author": "Cognifyz Intern",
   "license": "ISC",
